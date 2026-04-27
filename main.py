@@ -3,14 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# =========================
 # LOAD DATA
-# =========================
+
 df = pd.read_csv("healthcare-dataset-stroke-data.csv")
 
-# =========================
+
 # BASIC EXPLORATION
-# =========================
+
 print(df.head())
 print(df.shape)
 print(df.info())
@@ -320,3 +319,12 @@ plt.show()
 
 print("AUC:", roc_auc_score(y_test, y_prob))
 
+import joblib
+
+# Save model
+joblib.dump(rf_model, "rf_model.pkl")
+
+# Save scaler
+joblib.dump(scaler, "scaler.pkl")
+
+joblib.dump(X.columns, "features.pkl")
